@@ -1,4 +1,4 @@
-# network_vis
+# network-vis
 A react component to visualise a graph of nodes and edges for the given data. It is based on vis.js library. Currently, only string nodes are supported.  
 
 
@@ -13,7 +13,7 @@ To use the component, In your react Application just do
 
 ```javascript
 import React, { Component } from 'react';
-import Network from 'network_vis';
+import Network from 'network-vis';
 
 const containerStyle = {
   width: '100vh',
@@ -31,10 +31,10 @@ class MyComponent extends Component {
 
     async handleNodeClick(node) {
       try {
-      const jsonPromise = await fetch(`${myURL}${node}`);
-      this.setState({
-          listOfNodes: await jsonPromise.json(),
-      });
+        const jsonPromise = await fetch('url for fetching array of strings for each clicked node');
+        this.setState({
+            listOfNodes: await jsonPromise.json(),
+        });
       } catch (err) {
           console.log('failed');
       }

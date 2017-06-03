@@ -1,6 +1,6 @@
 {
-  "name": "network_bis  ",
-  "version": "1.0.0",
+  "name": "network-vis  ",
+  "version": "1.0.2",
   "main": "lib/index.js",
   "scripts": {
     "watch": "cross-env NODE_ENV=development webpack -w",
