@@ -17,9 +17,7 @@ export default class Network extends Component {
       nodes: this.nodes,
       edges: this.edges,
     };
-    this.state = {
-      selectedNode: {},
-    };
+    this.selectedNode = [];
 
     this.options = {
       nodes: {
@@ -168,7 +166,7 @@ export default class Network extends Component {
   handleNodeClick(params) {
     if (params.nodes.length) {
       this.props.onNodeClick(params.nodes[0]);
-      this.setState({ selectedNode: params.nodes[0] });
+      this.selectedNode = params.nodes[0];
     }
   }
 
@@ -176,6 +174,8 @@ export default class Network extends Component {
     this.network = new vis.Network(container, this.data, this.options);
     this.addRootNode();
     this.bindEventsToNetwork();
+    this.selectedNode = this.props.root.toUpperCase();
+    this.expandNetwork(this.props.subNodes || []);
   }
 
 
@@ -217,13 +217,13 @@ export default class Network extends Component {
   }
 
   createNewNode(eachNode) {
-    const parentNode = this.nodes.get(this.state.selectedNode);
+    const parentNode = this.nodes.get(this.selectedNode);
     const nodeSpawn = this.getSpawnPosition(parentNode.id);
     return ({
       id: eachNode.toUpperCase(),
       label: eachNode,
       value: 1,
-      level: this.nodes.get(this.state.selectedNode).level + 1,
+      level: this.nodes.get(this.selectedNode).level + 1,
       parent: parentNode.id,
       x: nodeSpawn[0],
       y: nodeSpawn[1],
@@ -232,12 +232,12 @@ export default class Network extends Component {
   }
 
   removeExistingEdges(eachNode) {
-    const parentNode = this.nodes.get(this.state.selectedNode);
+    const parentNode = this.nodes.get(this.selectedNode);
     return !(this.getEdgeConnecting(parentNode.id, eachNode.toUpperCase()));
   }
 
   createNewOutgoingEdge(eachNode) {
-    const parentNode = this.nodes.get(this.state.selectedNode);
+    const parentNode = this.nodes.get(this.selectedNode);
     return ({
       from: parentNode.id,
       to: eachNode.toUpperCase(),
@@ -249,7 +249,7 @@ export default class Network extends Component {
   }
 
   createNewIngoingEdge(eachNode) {
-    const parentNode = this.nodes.get(this.state.selectedNode);
+    const parentNode = this.nodes.get(this.selectedNode);
     return ({
       to: parentNode.id,
       from: eachNode.toUpperCase(),
