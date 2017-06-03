@@ -1,0 +1,36 @@
+{
+  "name": "network",
+  "version": "1.0.0",
+  "main": "lib/index.js",
+  "scripts": {
+    "watch": "cross-env NODE_ENV=development webpack -w",
+    "build:dev": "cross-env NODE_ENV=development webpack",
+    "build:production": "cross-env NODE_ENV=production webpack -p"
+  },
+  "keywords": [
+    "Graph Creater",
+    "Network Visulizations",
+    "Linked data visualizations",
+    "vis.js",
+    "nodes and edges"
+  ],
+  "repository": "https://github.com/bishwenduk029/network.git",
+  "author": "Bishewndu Kundu <bishwenduk029@gmail.com>",
+  "license": "MIT",
+  "peerDependency": {
+    "vis": "^4.20.0",
+    "react": "^15.5.4",
+    "react-dom": "^15.5.4"
+  },
+  "devDependencies": {
+    "babel-core": "^6.24.1",
+    "babel-loader": "^7.0.0",
+    "babel-preset-env": "^1.5.1",
+    "babel-preset-react": "^6.24.1",
+    "cross-env": "^5.0.0",
+    "react": "^15.5.4",
+    "react-dom": "^15.5.4",
+    "vis": "^4.20.0",
+    "webpack": "^2.6.1"
+  }
+}
