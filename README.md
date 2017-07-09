@@ -4,7 +4,7 @@ A react component to visualise a graph of nodes and edges for the given data. It
 
 ## Installation
 
-To install this Component, run `yarn add network-vis` or `npm install network-vis`., Don't forget to install vis.js by running `yarn add vis`.
+To install this Component, run `npm install network-vis`., Don't forget to install vis.js by running `yarn add vis`.
 
 
 ## Usage
